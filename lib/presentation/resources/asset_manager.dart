@@ -13,9 +13,9 @@ class ImageManager {
       AssetManager.onBoardingPath + 'on boarding 2.svg';
   static const String onBoardingImage3 =
       AssetManager.onBoardingPath + 'on boarding 3.svg';
-  static const String google = AssetManager.authPath + 'google.svg';
-  static const String facebook = AssetManager.authPath + 'facebook.svg';
-  static const String apple = AssetManager.authPath + 'apple.svg';
+  static const String google = AssetManager.authPath + 'google-brands.svg';
+  static const String facebook = AssetManager.authPath + 'facebook-f-brands.svg';
+  static const String apple = AssetManager.authPath + 'apple-brands.svg';
   static const String profile = AssetManager.homePath + 'Profile.svg';
   static const String categories = AssetManager.homePath + 'Categories.svg';
   static const String favorites = AssetManager.homePath + 'Favorites.svg';
@@ -42,6 +42,10 @@ class ImageManager {
   static const String clock = AssetManager.homePath + 'Group 86.svg';
   static const String tag6 = AssetManager.homePath + 'tag-6.svg';
   static const String pump = AssetManager.homePath + 'pump.png';
+  static const String back = AssetManager.homePath + 'back-6.svg';
+  static const String box = AssetManager.homePath + 'box-6.svg';
+  static const String group = AssetManager.homePath + 'Group 139.svg';
+  static const String truck = AssetManager.homePath + 'truck-6.svg';
   static const String notificationContentIcon =
       AssetManager.homePath + 'Group 161.svg';
   static const String right = AssetManager.sideMenu + 'right-6.svg';
@@ -57,4 +61,12 @@ class ImageManager {
     AssetManager.sideMenu + 'logout-6.svg',
     AssetManager.sideMenu + 'Path 773.svg',
   ];
+  static const List<String> payment = [
+    AssetManager.homePath + 'credit-6.svg',
+    AssetManager.homePath + 'wallet-6.svg',
+    AssetManager.homePath + 'phone pay-6.svg',
+    AssetManager.homePath + 'cash-6.svg',
+
+  ];
+
 }

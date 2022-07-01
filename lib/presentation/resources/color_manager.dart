@@ -6,11 +6,14 @@ class ColorManager{
   static Color onBoardingDotIndicatorColor = HexColor.convert('#F5DDE2');
   static Color primaryFontColor = HexColor.convert('#003C5A');
   static Color subFontColor = HexColor.convert('#0A3449');
+  static Color offerColor = HexColor.convert('#FAEEF1');
+  static Color offerColor2 = HexColor.convert('#E5F4FC');
   static Color accentFontColor = HexColor.convert('#9B9B9B');
   static Color textButtonColor = HexColor.convert('#1572A1');
   static Color registerSubtitle = HexColor.convert('#767676');
   static Color haveAccountTextColor = HexColor.convert('#9E9E9E');
   static Color white = HexColor.convert('#FFFFFF');
+  static Color homeCarouselTextColor = HexColor.convert('#6D2131');
   static Color errorColor = HexColor.convert('#E61F34');
   static Color bottomNavigationTextColor = HexColor.convert('#938488');
   static Color activeBottomNavigationColor = HexColor.convert('#D36C82');

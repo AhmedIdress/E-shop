@@ -15,9 +15,14 @@ class OffersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: ColorManager.notificationColor,
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: ColorManager.notificationColor,
+          ),
         ),
         title: Text(
           StringManager.bestOffers,

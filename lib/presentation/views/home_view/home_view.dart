@@ -1,6 +1,9 @@
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
+import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
+import 'package:e_shop/presentation/resources/reusable/carosul.dart';
+import 'package:e_shop/presentation/resources/reusable/dot_indicator.dart';
 import 'package:e_shop/presentation/resources/reusable/rate_bar.dart';
 import 'package:e_shop/presentation/resources/reusable/search_button.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
@@ -41,10 +44,9 @@ class HomeView extends StatelessWidget {
         actions: [
           GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NotificationView(),
+                Navigator.of(context).push(
+                  AnimationRoute(
+                    pageBuilder: (context, animation1, animation2) => NotificationView(),
                   ),
                 );
               },
@@ -59,10 +61,10 @@ class HomeView extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SideMenu(),
+              Navigator.of(context).push(
+                AnimationRoute(
+                  pageBuilder: (context, animation1, animation2) =>
+                  const SideMenu(),
                 ),
               );
             },
@@ -99,10 +101,10 @@ class HomeView extends StatelessWidget {
                   const SearchButton(),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const FilterView(),
+                      Navigator.of(context).push(
+                        AnimationRoute(
+                          pageBuilder: (context, animation1, animation2) =>
+                          const FilterView(),
                         ),
                       );
                     },
@@ -126,13 +128,242 @@ class HomeView extends StatelessWidget {
               SizedBox(
                 height: AppSizeManager.s20.h,
               ),
-              //change image to carousel
-              Image(
-                height: AppSizeManager.s240.h,
-                width: AppSizeManager.s380.w,
-                image: const AssetImage(
-                  ImageManager.banner,
-                ),
+              Consumer<HomeViewModel>(
+                builder: (context,home,child) => Carousel(
+                    height: AppSizeManager.s240.h,
+                    items: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder: (context, animation1, animation2) =>
+                              const SubCategory(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage(
+                              ImageManager.banner,
+                            ),
+                          )),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: AppSizeManager.s10.w,
+                              bottom: AppSizeManager.s24.h,
+                              top: AppSizeManager.s25.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  color: ColorManager.offerColor,
+                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  child: SizedBox(
+                                    height: AppSizeManager.s120,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          StringManager.welcome,
+                                          style:
+                                              TextStyleManager.getMediumTextStyle(
+                                                  color: ColorManager
+                                                      .homeCarouselTextColor,
+                                                  fontSize:
+                                                      FontSizeManager.s16.sp),
+                                        ),
+                                        SizedBox(
+                                          height: AppSizeManager.s13.h,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            StringManager.offer,
+                                            style:
+                                                TextStyleManager.getBoldTextStyle(
+                                                    color:
+                                                        ColorManager.primaryColor,
+                                                    fontSize:
+                                                        FontSizeManager.s38.sp),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: AppSizeManager.s10.h,
+                                  width: AppSizeManager.s30.w,
+                                  color: ColorManager.offerColor,
+                                  child: DotIndicator(
+                                    dotsCount: 3,
+                                    index: home.carouselIndex,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder: (context, animation1, animation2) =>
+                              const SubCategory(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage(
+                              ImageManager.banner,
+                            ),
+                          )),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: AppSizeManager.s10.w,
+                              bottom: AppSizeManager.s24.h,
+                              top: AppSizeManager.s25.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  color: ColorManager.offerColor,
+                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  child: SizedBox(
+                                    height: AppSizeManager.s120,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          StringManager.welcome,
+                                          style:
+                                              TextStyleManager.getMediumTextStyle(
+                                                  color: ColorManager
+                                                      .homeCarouselTextColor,
+                                                  fontSize:
+                                                      FontSizeManager.s16.sp),
+                                        ),
+                                        SizedBox(
+                                          height: AppSizeManager.s13.h,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            StringManager.offer,
+                                            style:
+                                                TextStyleManager.getBoldTextStyle(
+                                                    color:
+                                                        ColorManager.primaryColor,
+                                                    fontSize:
+                                                        FontSizeManager.s38.sp),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: AppSizeManager.s10.h,
+                                  width: AppSizeManager.s30.w,
+                                  color: ColorManager.offerColor,
+                                  child: DotIndicator(
+                                    dotsCount: 3,
+                                    index: home.carouselIndex,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder: (context, animation1, animation2) =>
+                              const SubCategory(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage(
+                              ImageManager.banner,
+                            ),
+                          )),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: AppSizeManager.s10.w,
+                              bottom: AppSizeManager.s24.h,
+                              top: AppSizeManager.s25.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  color: ColorManager.offerColor,
+                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  child: SizedBox(
+                                    height: AppSizeManager.s120,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          StringManager.welcome,
+                                          style:
+                                              TextStyleManager.getMediumTextStyle(
+                                                  color: ColorManager
+                                                      .homeCarouselTextColor,
+                                                  fontSize:
+                                                      FontSizeManager.s16.sp),
+                                        ),
+                                        SizedBox(
+                                          height: AppSizeManager.s13.h,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            StringManager.offer,
+                                            style:
+                                                TextStyleManager.getBoldTextStyle(
+                                                    color:
+                                                        ColorManager.primaryColor,
+                                                    fontSize:
+                                                        FontSizeManager.s38.sp),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: AppSizeManager.s10.h,
+                                  width: AppSizeManager.s30.w,
+                                  color: ColorManager.offerColor,
+                                  child: DotIndicator(
+                                    dotsCount: 3,
+                                    index: home.carouselIndex,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    onChanged: (index) {
+                      home.carouselChangeIndex(index);
+                    }),
               ),
               SizedBox(
                 height: AppSizeManager.s20.h,
@@ -150,10 +381,10 @@ class HomeView extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const OffersView(),
+                      Navigator.of(context).push(
+                        AnimationRoute(
+                          pageBuilder: (context, animation1, animation2) =>
+                          const OffersView(),
                         ),
                       );
                     },
@@ -175,11 +406,22 @@ class HomeView extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return CircleAvatar(
-                      backgroundImage: const AssetImage(
-                        ImageManager.offer,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          AnimationRoute(
+                            pageBuilder: (context, animation1, animation2) =>
+                                const SubCategory(),
+                          ),
+                        );
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: const AssetImage(
+                          ImageManager.offer,
+                        ),
+                        radius: AppSizeManager.s25.w,
                       ),
-                      radius: AppSizeManager.s25.w,
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
@@ -205,10 +447,10 @@ class HomeView extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SubCategory(),
+                      Navigator.of(context).push(
+                        AnimationRoute(
+                          pageBuilder: (context, animation1, animation2) =>
+                          const SubCategory(),
                         ),
                       );
                     },
@@ -242,10 +484,18 @@ class HomeView extends StatelessWidget {
                       height: AppSizeManager.s160.h,
                       width: AppSizeManager.s180.w,
                       child: GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>const ProductDetail(),),);},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder: (context, animation1, animation2) =>
+                              const ProductDetail(),
+                            ),
+                          );
+                        },
                         child: Card(
                           child: Padding(
-                            padding: const EdgeInsets.all(AppPaddingManager.p10),
+                            padding:
+                                const EdgeInsets.all(AppPaddingManager.p10),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -276,7 +526,8 @@ class HomeView extends StatelessWidget {
                                                 color: ColorManager
                                                     .popularProductNameColor,
                                                 letterSpacing: 0,
-                                                fontSize: FontSizeManager.s12.sp),
+                                                fontSize:
+                                                    FontSizeManager.s12.sp),
                                       ),
                                     ),
                                     SizedBox(
@@ -296,7 +547,8 @@ class HomeView extends StatelessWidget {
                                   children: [
                                     Text(
                                       StringManager.prise + '\$',
-                                      style: TextStyleManager.getRegularTextStyle(
+                                      style:
+                                          TextStyleManager.getRegularTextStyle(
                                         color: ColorManager.seeAllColor,
                                         letterSpacing: 0,
                                         fontSize: 12,
@@ -333,10 +585,10 @@ class HomeView extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TrendyView(),
+                      Navigator.of(context).push(
+                        AnimationRoute(
+                          pageBuilder: (context, animation1, animation2) =>
+                          const TrendyView(),
                         ),
                       );
                     },
@@ -366,9 +618,19 @@ class HomeView extends StatelessWidget {
                   },
                   itemCount: 3,
                   itemBuilder: (BuildContext context, int index) {
-                    return Image(
-                      image: const AssetImage(ImageManager.img1),
-                      width: AppSizeManager.s312.w,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          AnimationRoute(
+                            pageBuilder: (context, animation1, animation2) =>
+                            const ProductDetail(),
+                          ),
+                        );
+                      },
+                      child: Image(
+                        image: const AssetImage(ImageManager.img1),
+                        width: AppSizeManager.s312.w,
+                      ),
                     );
                   },
                 ),
@@ -383,32 +645,42 @@ class HomeView extends StatelessWidget {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: AppSizeManager.s20.w,
                       mainAxisSpacing: AppSizeManager.s20.h,
-                      mainAxisExtent: 170,
+                      mainAxisExtent: AppSizeManager.s180.h,
                       crossAxisCount: 2),
                   shrinkWrap: true,
                   itemCount: 4,
                   itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      height: AppSizeManager.s180.h,
-                      width: AppSizeManager.s180.w,
-                      child: Column(
-                        children: [
-                          Image(
-                            image: const AssetImage(
-                              ImageManager.bG,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          AnimationRoute(
+                            pageBuilder: (context, animation1, animation2) =>
+                            const SubCategory(),
+                          ),
+                        );
+                      },
+                      child: SizedBox(
+                        height: AppSizeManager.s180.h,
+                        width: AppSizeManager.s180.w,
+                        child: Column(
+                          children: [
+                            Image(
+                              image: const AssetImage(
+                                ImageManager.bG,
+                              ),
+                              height: AppSizeManager.s144.h,
                             ),
-                            height: AppSizeManager.s144.h,
-                          ),
-                          SizedBox(
-                            height: AppSizeManager.s10.h,
-                          ),
-                          Text(
-                            StringManager.hoodies,
-                            style: TextStyleManager.getMediumTextStyle(
-                              color: ColorManager.subFontColor,
+                            SizedBox(
+                              height: AppSizeManager.s10.h,
                             ),
-                          ),
-                        ],
+                            Text(
+                              StringManager.hoodies,
+                              style: TextStyleManager.getMediumTextStyle(
+                                color: ColorManager.subFontColor,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

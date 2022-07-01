@@ -52,25 +52,25 @@ class RegisterView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTextFormFiled(
-                      validator: (value){},
+                      validator: (value) {},
                       keyboardType: TextInputType.text,
                       icon: Icons.account_circle_outlined,
                       label: StringManager.userName,
                     ),
                     CustomTextFormFiled(
-                      validator: (value){},
+                      validator: (value) {},
                       keyboardType: TextInputType.emailAddress,
                       icon: Icons.email_outlined,
                       label: StringManager.email,
                     ),
                     CustomTextFormFiled(
                       keyboardType: TextInputType.phone,
-                      validator: (value){},
+                      validator: (value) {},
                       icon: Icons.phone,
                       label: StringManager.phone,
                     ),
                     CustomTextFormFiled(
-                      validator: (value){},
+                      validator: (value) {},
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       icon: Icons.lock_outline_rounded,
@@ -96,7 +96,12 @@ class RegisterView extends StatelessWidget {
               ),
               SocialButton(
                 text: StringManager.google,
-                icon: SvgPicture.asset(ImageManager.google,),
+                icon: SvgPicture.asset(
+                  ImageManager.google,
+                  width: AppSizeManager.s18.w,
+                  height: AppSizeManager.s18.h,
+                  color: ColorManager.accentFontColor,
+                ),
                 width: (AppSizeManager.sWidth - AppSizeManager.s16 * 2).w,
               ),
               SizedBox(
@@ -107,13 +112,23 @@ class RegisterView extends StatelessWidget {
                 children: [
                   SocialButton(
                     text: StringManager.facebook,
-                    icon: SvgPicture.asset(ImageManager.facebook,),
+                    icon: SvgPicture.asset(
+                      ImageManager.facebook,
+                      width: AppSizeManager.s18.w,
+                      height: AppSizeManager.s18.h,
+                      color: ColorManager.accentFontColor,
+                    ),
                     width: AppSizeManager.s170.w,
                   ),
                   SocialButton(
                     text: StringManager.apple,
-                    icon: SvgPicture.asset(ImageManager.apple,),
                     width: AppSizeManager.s170.w,
+                    icon: SvgPicture.asset(
+                      ImageManager.apple,
+                      width: AppSizeManager.s18.w,
+                      height: AppSizeManager.s18.h,
+                      color: ColorManager.accentFontColor,
+                    ),
                   ),
                 ],
               ),
