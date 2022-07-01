@@ -10,6 +10,10 @@ class StringManager {
   static const String onBoardingSubTitle3 =
       'Set Your Delivery locations. Choose your clothes from a wide range of our required products.';
   static const String nextButton = 'Next';
+  static const String bestSeller = 'Best Seller';
+  static const String menFashion = 'Men\'s Fashion';
+  static const String welcome = 'Welcome in e-shop';
+  static const String offer = 'Get Up To 50% Off';
   static const String getStartedButton = 'Get Started';
   static const String signInButton = 'Sign in';
   static const String signInSubtitle = 'Sign in  your new account on e-shop';
@@ -104,6 +108,41 @@ class StringManager {
   static const String description = 'Description';
   static const String review = 'Review';
   static const String ask = 'Ask Question';
+  static const String addToCartButtonTitle = 'Add To Cart';
+  static const String checkout = 'Checkout';
+  static const String shoppingTo = 'Shipping to';
+  static const String deliveryDate = 'Delivery Date';
+  static const String payment = 'Payment Methods ';
+  static const String addNew = 'Add New';
+  static const String cont = 'Continue';
+  static const String tot = 'Total :';
+
+  static const String addPlace = 'Add Place';
+  static const String home = 'Home';
+  static const String homeAddress = 'There are many variations of passages of  available, but the majorities '
+      'have suffered There are many variations of passages of Lorem ';
+  static const String mobile = 'Mobile : ';
+  static const String office = 'Office : ';
+  static const String officeAddress = 'There are many variations of passages of  available,'
+      ' but the majorities have suffered There are many variations of passages of Lorem ';
+  static const String descriptionContent = 'There are many variations of passages of Lorem Ipsum available, '
+      'but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t '
+      'look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there '
+      'isn\'t anything embarrassing hidden in the middle of text.';
+
+  static const String deliveryTitle1 = 'Delivery To The Door Of The House';
+  static const String deliveryTitle2 = 'Delivery Center';
+  static const String deliveryTitle3 = 'Return Policy';
+  static const String deliveryPrice1 = 'Shipping EGP 22.23';
+  static const String deliveryPrice2 = 'Shipping EGP 22.23';
+
+
+  static const String deliveryDescription1 = 'Available for pickup between 28 Feb and 09 Mar On request within 2hrs 1mints';
+  static const String deliveryDescription2 = 'Available for pickup between 28 Feb and 09 Mar On request within 2hrs 1mints';
+  static const String deliveryDescription3 = 'Returning products for free for a period of 14 days '
+      '( except for underwear and personal use products ) and up to 30 days for damaged products,'
+      ' with the need to report them within 24 hours from the date of receipt. See More';
+
 
 
   static const List<String> categoryFilter = [
@@ -160,5 +199,11 @@ class StringManager {
     'men blue jacket',
     'jacket men hip hop',
     'pink hoodie t-shirt full',
+  ];
+  static const paymentMethods = [
+    'Credit / Debit Card',
+    'Wallet',
+    'Phone Pay',
+    'Cash On Delivery',
   ];
 }

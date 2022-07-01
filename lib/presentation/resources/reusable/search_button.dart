@@ -1,6 +1,7 @@
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
+import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
@@ -16,11 +17,11 @@ class SearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SearchView(),
+      onTap: () {
+        Navigator.of(context).push(
+          AnimationRoute(
+            pageBuilder: (context, animation1, animation2) =>
+            const SearchView(),
           ),
         );
       },

@@ -4,8 +4,10 @@ import 'package:e_shop/presentation/resources/font_manager.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
+import 'package:e_shop/presentation/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -14,9 +16,19 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: ColorManager.notificationColor,
+        leading: GestureDetector(
+          onTap: () {
+            if(context.read<HomeViewModel>().active==4){
+              context.read<HomeViewModel>().bottomNavigationChangeActiveItem(0);
+            }
+            else{
+              Navigator.pop(context);
+            }
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: ColorManager.notificationColor,
+          ),
         ),
         title: Text(
           StringManager.navigationBarProfile,

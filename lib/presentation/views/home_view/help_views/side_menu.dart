@@ -1,10 +1,13 @@
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
+import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
 import 'package:e_shop/presentation/resources/reusable/custom_switch.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
+import 'package:e_shop/presentation/views/home_view/help_views/notification_view.dart';
+import 'package:e_shop/presentation/views/home_view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -93,25 +96,103 @@ class SideMenu extends StatelessWidget {
               child: ListView.separated(
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: AppSizeManager.s66.h,
-                    width: double.infinity,
-                    child: ListTile(
-                      leading: SvgPicture.asset(
-                        ImageManager.sideMenu[index],
+                  return GestureDetector(
+                    onTap: (){
+                      switch(index){
+                        case 0:
+                            /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 1:
+                        Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const ProfileView(),
+                              ),
+                            );
+                          break;
+                        case 2:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 3:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 4:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 5:
+                        Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) => NotificationView(),
+                              ),
+                            );
+                          break;
+                        case 6:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 7:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+                        case 8:
+                        /*Navigator.of(context).push(
+                              AnimationRoute(
+                                pageBuilder: (context, animation, secondaryAnimation) =>
+                                const SideMenu(),
+                              ),
+                            );*/
+                          break;
+
+                      }
+                    },
+                    child: SizedBox(
+                      height: AppSizeManager.s66.h,
+                      width: double.infinity,
+                      child: ListTile(
+                        leading: SvgPicture.asset(
+                          ImageManager.sideMenu[index],
+                        ),
+                        title: Text(
+                          StringManager.sideMenuItemsTitle[index],
+                          style: TextStyleManager.getBoldTextStyle(
+                              color: ColorManager.primaryFontColor,
+                              fontSize: FontSizeManager.s14.sp),
+                        ),
+                        trailing:
+                            index == StringManager.sideMenuItemsTitle.length - 1
+                                ? CustomSwitch(value: true, onChanged: (value) {})
+                                : SvgPicture.asset(
+                                    ImageManager.right,
+                                  ),
                       ),
-                      title: Text(
-                        StringManager.sideMenuItemsTitle[index],
-                        style: TextStyleManager.getBoldTextStyle(
-                            color: ColorManager.primaryFontColor,
-                            fontSize: FontSizeManager.s14.sp),
-                      ),
-                      trailing:
-                          index == StringManager.sideMenuItemsTitle.length - 1
-                              ? CustomSwitch(value: true, onChanged: (value) {})
-                              : SvgPicture.asset(
-                                  ImageManager.right,
-                                ),
                     ),
                   );
                 },

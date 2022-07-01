@@ -2,13 +2,18 @@ import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
 import 'package:e_shop/presentation/resources/reusable/Primary_button.dart';
+import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
 import 'package:e_shop/presentation/resources/reusable/cart_text.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
+import 'package:e_shop/presentation/view_model/home_view_model.dart';
+import 'package:e_shop/presentation/views/home_view/help_views/checkout.dart';
+import 'package:e_shop/presentation/views/home_view/help_views/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);
@@ -17,9 +22,14 @@ class CartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: ColorManager.notificationColor,
+        leading: GestureDetector(
+          onTap: () {
+            context.read<HomeViewModel>().bottomNavigationChangeActiveItem(0);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: ColorManager.notificationColor,
+          ),
         ),
         title: Text(
           StringManager.navigationBarCart,
@@ -27,7 +37,14 @@ class CartView extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                AnimationRoute(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                  const SideMenu(),
+                ),
+              );
+            },
             child: SvgPicture.asset(
               ImageManager.list,
               width: AppSizeManager.s16.w,
@@ -77,7 +94,9 @@ class CartView extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: AppPaddingManager.p16,),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: AppPaddingManager.p16,
+                                  ),
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -100,7 +119,8 @@ class CartView extends StatelessWidget {
                                                 StringManager.prise2,
                                             style: TextStyleManager
                                                 .getMediumTextStyle(
-                                              color: ColorManager.primaryFontColor
+                                              color: ColorManager
+                                                  .primaryFontColor
                                                   .withOpacity(.5),
                                               fontSize: FontSizeManager.s12.sp,
                                             ),
@@ -141,7 +161,8 @@ class CartView extends StatelessWidget {
                                                   .getBoldTextStyle(
                                                 color: ColorManager.cartColors
                                                     .withOpacity(.5),
-                                                fontSize: FontSizeManager.s10.sp,
+                                                fontSize:
+                                                    FontSizeManager.s10.sp,
                                               ),
                                             ),
                                             SizedBox(
@@ -149,15 +170,18 @@ class CartView extends StatelessWidget {
                                             ),
                                             Expanded(
                                               child: ListView.separated(
-                                                scrollDirection: Axis.horizontal,
+                                                scrollDirection:
+                                                    Axis.horizontal,
                                                 itemCount: 5,
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
                                                   return CircleAvatar(
                                                     backgroundColor: ColorManager
-                                                        .cartColorsContent[index],
-                                                    radius: AppSizeManager.s10.w,
+                                                            .cartColorsContent[
+                                                        index],
+                                                    radius:
+                                                        AppSizeManager.s10.w,
                                                   );
                                                 },
                                                 separatorBuilder:
@@ -182,7 +206,8 @@ class CartView extends StatelessWidget {
                                                   .getBoldTextStyle(
                                                 color: ColorManager.cartColors
                                                     .withOpacity(.5),
-                                                fontSize: FontSizeManager.s10.sp,
+                                                fontSize:
+                                                    FontSizeManager.s10.sp,
                                               ),
                                             ),
                                             SizedBox(
@@ -190,25 +215,38 @@ class CartView extends StatelessWidget {
                                             ),
                                             Expanded(
                                               child: ListView.separated(
-                                                scrollDirection: Axis.horizontal,
-                                                itemCount: StringManager.cartSizes.length,
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: StringManager
+                                                    .cartSizes.length,
                                                 itemBuilder:
                                                     (BuildContext context,
                                                         int index) {
                                                   return CircleAvatar(
-                                                    backgroundColor: ColorManager.subFontColor
-                                                        .withOpacity(.6),
-                                                    radius: AppSizeManager.s12.w,
-                                                    child: CircleAvatar(
-                                                      backgroundColor: ColorManager
-                                                          .white,
-                                                      radius: AppSizeManager.s11.w,
-                                                      child: Text(StringManager.cartSizes[index],style:TextStyleManager
-                                                          .getBoldTextStyle(
-                                                        color: ColorManager.subFontColor
+                                                    backgroundColor:
+                                                        ColorManager
+                                                            .subFontColor
                                                             .withOpacity(.6),
-                                                        fontSize: FontSizeManager.s10.sp,
-                                                      ),),
+                                                    radius:
+                                                        AppSizeManager.s12.w,
+                                                    child: CircleAvatar(
+                                                      backgroundColor:
+                                                          ColorManager.white,
+                                                      radius:
+                                                          AppSizeManager.s11.w,
+                                                      child: Text(
+                                                        StringManager
+                                                            .cartSizes[index],
+                                                        style: TextStyleManager
+                                                            .getBoldTextStyle(
+                                                          color: ColorManager
+                                                              .subFontColor
+                                                              .withOpacity(.6),
+                                                          fontSize:
+                                                              FontSizeManager
+                                                                  .s10.sp,
+                                                        ),
+                                                      ),
                                                     ),
                                                   );
                                                 },
@@ -233,7 +271,8 @@ class CartView extends StatelessWidget {
                                             height: AppSizeManager.s20.h,
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Expanded(
                                                   child: Container(
@@ -241,7 +280,8 @@ class CartView extends StatelessWidget {
                                                       Icons.add,
                                                       color: ColorManager
                                                           .counterColor,
-                                                      size: AppSizeManager.s16.w,
+                                                      size:
+                                                          AppSizeManager.s16.w,
                                                     ),
                                                     decoration: BoxDecoration(
                                                       color: ColorManager.white,
@@ -252,8 +292,8 @@ class CartView extends StatelessWidget {
                                                         BoxShadow(
                                                           spreadRadius: 1.5,
                                                           blurRadius: 1,
-                                                          offset:
-                                                              const Offset(0, 1),
+                                                          offset: const Offset(
+                                                              0, 1),
                                                           color: ColorManager
                                                               .accentFontColor
                                                               .withOpacity(.2),
@@ -261,7 +301,8 @@ class CartView extends StatelessWidget {
                                                       ],
                                                     ),
                                                     width: AppSizeManager.s20.w,
-                                                    height: AppSizeManager.s20.h,
+                                                    height:
+                                                        AppSizeManager.s20.h,
                                                   ),
                                                 ),
                                                 Expanded(
@@ -272,8 +313,9 @@ class CartView extends StatelessWidget {
                                                           .getMediumTextStyle(
                                                         color: ColorManager
                                                             .primaryFontColor,
-                                                        fontSize: FontSizeManager
-                                                            .s12.sp,
+                                                        fontSize:
+                                                            FontSizeManager
+                                                                .s12.sp,
                                                       ),
                                                     ),
                                                   ),
@@ -285,7 +327,8 @@ class CartView extends StatelessWidget {
                                                       Icons.remove,
                                                       color: ColorManager
                                                           .counterColor,
-                                                      size: AppSizeManager.s16.w,
+                                                      size:
+                                                          AppSizeManager.s16.w,
                                                     ),
                                                     decoration: BoxDecoration(
                                                       color: ColorManager.white,
@@ -296,8 +339,8 @@ class CartView extends StatelessWidget {
                                                         BoxShadow(
                                                           spreadRadius: 1.5,
                                                           blurRadius: 1,
-                                                          offset:
-                                                              const Offset(0, 1),
+                                                          offset: const Offset(
+                                                              0, 1),
                                                           color: ColorManager
                                                               .accentFontColor
                                                               .withOpacity(.2),
@@ -305,7 +348,8 @@ class CartView extends StatelessWidget {
                                                       ],
                                                     ),
                                                     width: AppSizeManager.s20.w,
-                                                    height: AppSizeManager.s20.h,
+                                                    height:
+                                                        AppSizeManager.s20.h,
                                                   ),
                                                 ),
                                               ],
@@ -424,7 +468,13 @@ class CartView extends StatelessWidget {
               PrimaryButton(
                 width: AppSizeManager.s380.w,
                 buttonTitle: StringManager.proceedToCheckout,
-                onPress: () {},
+                onPress: () {
+                    Navigator.of(context).push(
+                      AnimationRoute(
+                        pageBuilder: (context, animation, secondaryAnimation) => Checkout(),
+                      ),
+                    );
+                },
               ),
             ],
           ),

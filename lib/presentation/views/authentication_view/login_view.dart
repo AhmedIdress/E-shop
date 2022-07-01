@@ -53,13 +53,13 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTextFormFiled(
-                      validator: (value){},
+                      validator: (value) {},
                       keyboardType: TextInputType.emailAddress,
                       icon: Icons.email_outlined,
                       label: StringManager.email,
                     ),
                     CustomTextFormFiled(
-                      validator: (value){},
+                      validator: (value) {},
                       obscureText: true,
                       keyboardType: TextInputType.visiblePassword,
                       icon: Icons.lock_outline_rounded,
@@ -129,7 +129,12 @@ class LoginView extends StatelessWidget {
               ),
               SocialButton(
                 text: StringManager.google,
-                icon: SvgPicture.asset(ImageManager.google,),
+                icon: SvgPicture.asset(
+                  ImageManager.google,
+                  width: AppSizeManager.s18.w,
+                  height: AppSizeManager.s18.h,
+                  color: ColorManager.accentFontColor,
+                ),
                 width: (AppSizeManager.sWidth - AppSizeManager.s16 * 2).w,
               ),
               SizedBox(
@@ -140,12 +145,22 @@ class LoginView extends StatelessWidget {
                 children: [
                   SocialButton(
                     text: StringManager.facebook,
-                    icon: SvgPicture.asset(ImageManager.facebook,),
+                    icon: SvgPicture.asset(
+                      ImageManager.facebook,
+                      width: AppSizeManager.s18.w,
+                      height: AppSizeManager.s18.h,
+                      color: ColorManager.accentFontColor,
+                    ),
                     width: AppSizeManager.s170.w,
                   ),
                   SocialButton(
                     text: StringManager.apple,
-                    icon: SvgPicture.asset(ImageManager.apple,),
+                    icon: SvgPicture.asset(
+                      ImageManager.apple,
+                      width: AppSizeManager.s18.w,
+                      height: AppSizeManager.s18.h,
+                      color: ColorManager.accentFontColor,
+                    ),
                     width: AppSizeManager.s170.w,
                   ),
                 ],

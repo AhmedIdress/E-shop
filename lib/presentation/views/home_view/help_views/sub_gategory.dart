@@ -1,11 +1,13 @@
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
+import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
 import 'package:e_shop/presentation/resources/reusable/rate_bar.dart';
 import 'package:e_shop/presentation/resources/reusable/search_button.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
+import 'package:e_shop/presentation/views/home_view/help_views/product_detail.dart';
 import 'package:e_shop/presentation/views/home_view/help_views/search_filter_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +35,14 @@ class SubCategory extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                AnimationRoute(
+                  pageBuilder: (context, animation1, animation2) =>
+                  const FilterView(),
+                ),
+              );
+            },
             child: SvgPicture.asset(
               ImageManager.list,
               width: AppSizeManager.s16.w,
@@ -61,10 +70,10 @@ class SubCategory extends StatelessWidget {
                 const SearchButton(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FilterView(),
+                    Navigator.of(context).push(
+                      AnimationRoute(
+                        pageBuilder: (context, animation1, animation2) =>
+                        const FilterView(),
                       ),
                     );
                   },
@@ -97,73 +106,83 @@ class SubCategory extends StatelessWidget {
                 ),
                 itemCount: 14,
                 itemBuilder: (context, index) {
-                  return SizedBox(
-                    height: AppSizeManager.s160.h,
-                    width: AppSizeManager.s180.w,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(AppPaddingManager.p10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Stack(
-                              children: const [
-                                Image(
-                                  image: AssetImage(
-                                    ImageManager.img,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        AnimationRoute(
+                          pageBuilder: (context, animation, secondaryAnimation) =>
+                          const ProductDetail(),
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      height: AppSizeManager.s160.h,
+                      width: AppSizeManager.s180.w,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppPaddingManager.p10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Stack(
+                                children: const [
+                                  Image(
+                                    image: AssetImage(
+                                      ImageManager.img,
+                                    ),
                                   ),
-                                ),
-                                Image(
-                                  image: AssetImage(
-                                    ImageManager.discount,
+                                  Image(
+                                    image: AssetImage(
+                                      ImageManager.discount,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    StringManager.caesarMensHoodie,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyleManager.getMediumTextStyle(
-                                        color: ColorManager
-                                            .popularProductNameColor,
-                                        letterSpacing: 0,
-                                        fontSize: FontSizeManager.s12.sp),
+                                ],
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      StringManager.caesarMensHoodie,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyleManager.getMediumTextStyle(
+                                          color: ColorManager
+                                              .popularProductNameColor,
+                                          letterSpacing: 0,
+                                          fontSize: FontSizeManager.s12.sp),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: AppSizeManager.s10.w,
-                                ),
-                                SvgPicture.asset(
-                                  ImageManager.favorites,
-                                  color: ColorManager.textButtonColor,
-                                  width: AppSizeManager.s14.w,
-                                  height: AppSizeManager.s14.h,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  StringManager.prise + '\$',
-                                  style: TextStyleManager.getRegularTextStyle(
-                                    color: ColorManager.seeAllColor,
-                                    letterSpacing: 0,
-                                    fontSize: 12,
+                                  SizedBox(
+                                    width: AppSizeManager.s10.w,
                                   ),
-                                ),
-                                const RateBar(
-                                  rate: 4,
-                                  width: 70,
-                                ),
-                              ],
-                            ),
-                          ],
+                                  SvgPicture.asset(
+                                    ImageManager.favorites,
+                                    color: ColorManager.textButtonColor,
+                                    width: AppSizeManager.s14.w,
+                                    height: AppSizeManager.s14.h,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    StringManager.prise + '\$',
+                                    style: TextStyleManager.getRegularTextStyle(
+                                      color: ColorManager.seeAllColor,
+                                      letterSpacing: 0,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  const RateBar(
+                                    rate: 4,
+                                    width: 70,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

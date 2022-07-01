@@ -19,9 +19,23 @@ class HomeViewModel with ChangeNotifier{
   ];
   int _active = 0;
   int get active=>_active;
+  int _carouselIndex = 0;
+  int get carouselIndex=>_carouselIndex;
+  int _categoriesCarouselIndex = 0;
+  int get categoriesCarouselIndex => _categoriesCarouselIndex;
   void bottomNavigationChangeActiveItem(int newValue)
   {
     _active=newValue;
+    notifyListeners();
+  }
+  void carouselChangeIndex(int index)
+  {
+    _carouselIndex=index;
+    notifyListeners();
+  }
+  void categoriesCarouselChangeIndex(int index)
+  {
+    _categoriesCarouselIndex =index;
     notifyListeners();
   }
 
