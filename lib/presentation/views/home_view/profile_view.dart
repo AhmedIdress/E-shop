@@ -60,16 +60,9 @@ class ProfileView extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
-              CircleAvatar(
-                radius: AppSizeManager.s40.w,
-                child: provider?.image == null
-                    ? const Image(
-                        image: AssetImage(ImageManager.profileImg),
-                      )
-                    : Image(
-                        image: NetworkImage(provider?.image ?? ""),
-                      ),
-              ),
+              Image(
+                      image: NetworkImage(provider?.image ?? ""),
+                    ),
               SizedBox(
                 height: AppSizeManager.s20.h,
               ),
