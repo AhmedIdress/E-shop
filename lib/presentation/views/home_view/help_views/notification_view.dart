@@ -1,4 +1,5 @@
-import 'package:e_shop/presentation/model/notification_model.dart';
+import 'package:e_shop/data/model/notification_model.dart';
+import 'package:e_shop/domain/view_model/home_view_model.dart';
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
@@ -6,7 +7,6 @@ import 'package:e_shop/presentation/resources/reusable/animation_route.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
-import 'package:e_shop/presentation/view_model/home_view_model.dart';
 import 'package:e_shop/presentation/views/home_view/help_views/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

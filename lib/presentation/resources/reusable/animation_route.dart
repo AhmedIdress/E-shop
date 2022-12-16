@@ -11,7 +11,7 @@ class AnimationRoute extends PageRouteBuilder {
                   end: const Offset(0, 0),
                 ).chain(
                   CurveTween(
-                    curve: Curves.ease,
+                    curve: Curves.linear,
                   ),
                 ),
               );
@@ -20,7 +20,7 @@ class AnimationRoute extends PageRouteBuilder {
                 child: child,
               );
             },
-  transitionDuration: const Duration(milliseconds: 1000),
-  reverseTransitionDuration: const Duration(milliseconds: 1000),
+  transitionDuration: const Duration(milliseconds: 300),
+  reverseTransitionDuration: const Duration(milliseconds: 300),
   );
 }

@@ -1,3 +1,4 @@
+import 'package:e_shop/domain/view_model/authintication/login_view_model.dart';
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
@@ -6,11 +7,14 @@ import 'package:e_shop/presentation/resources/reusable/custom_switch.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
+import 'package:e_shop/presentation/views/authentication_view/login_view.dart';
 import 'package:e_shop/presentation/views/home_view/help_views/notification_view.dart';
 import 'package:e_shop/presentation/views/home_view/profile_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -97,10 +101,13 @@ class SideMenu extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
-                    onTap: (){
-                      switch(index){
+                    onTap: () {
+                      if(kDebugMode){
+                        print(index);
+                      }
+                      switch (index) {
                         case 0:
-                            /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -108,15 +115,16 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 1:
-                        Navigator.of(context).push(
-                              AnimationRoute(
-                                pageBuilder: (context, animation, secondaryAnimation) =>
-                                const ProfileView(),
-                              ),
-                            );
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      const ProfileView(),
+                            ),
+                          );
                           break;
                         case 2:
-                        /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -124,7 +132,7 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 3:
-                        /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -132,7 +140,7 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 4:
-                        /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -140,14 +148,16 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 5:
-                        Navigator.of(context).push(
-                              AnimationRoute(
-                                pageBuilder: (context, animation, secondaryAnimation) => NotificationView(),
-                              ),
-                            );
+                          Navigator.of(context).push(
+                            AnimationRoute(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      NotificationView(),
+                            ),
+                          );
                           break;
                         case 6:
-                        /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -155,7 +165,7 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 7:
-                        /*Navigator.of(context).push(
+                          /*Navigator.of(context).push(
                               AnimationRoute(
                                 pageBuilder: (context, animation, secondaryAnimation) =>
                                 const SideMenu(),
@@ -163,14 +173,19 @@ class SideMenu extends StatelessWidget {
                             );*/
                           break;
                         case 8:
-                        /*Navigator.of(context).push(
-                              AnimationRoute(
-                                pageBuilder: (context, animation, secondaryAnimation) =>
-                                const SideMenu(),
-                              ),
-                            );*/
+                          context.read<LoginViewModel>().logOut().then((value){
+                            if (context.read<LoginViewModel>().logoutModel?.status??false) {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                AnimationRoute(
+                                  pageBuilder:
+                                      (context, animation, secondaryAnimation) =>
+                                  const LoginView(),
+                                ),
+                                    (route) => false,
+                              );
+                            }
+                          });
                           break;
-
                       }
                     },
                     child: SizedBox(
@@ -186,12 +201,12 @@ class SideMenu extends StatelessWidget {
                               color: ColorManager.primaryFontColor,
                               fontSize: FontSizeManager.s14.sp),
                         ),
-                        trailing:
-                            index == StringManager.sideMenuItemsTitle.length - 1
-                                ? CustomSwitch(value: true, onChanged: (value) {})
-                                : SvgPicture.asset(
-                                    ImageManager.right,
-                                  ),
+                        trailing: index ==
+                                StringManager.sideMenuItemsTitle.length - 1
+                            ? CustomSwitch(value: true, onChanged: (value) {})
+                            : SvgPicture.asset(
+                                ImageManager.right,
+                              ),
                       ),
                     ),
                   );

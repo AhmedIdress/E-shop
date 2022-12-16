@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/model/filter_chip_model.dart';
+import 'package:e_shop/data/model/filter_chip_model.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';

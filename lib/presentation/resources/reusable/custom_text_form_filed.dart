@@ -12,12 +12,14 @@ class CustomTextFormFiled extends StatelessWidget {
     this.validator,
     this.suffixIcon,
     this.keyboardType,
+    this.controller,
     this.obscureText=false,
   }) : super(key: key);
   final IconData? icon;
   final String label;
   final bool obscureText;
   final Widget? suffixIcon;
+  final TextEditingController? controller;
   final TextInputType? keyboardType;
   final String? Function(String? value)? validator;
   @override
@@ -26,6 +28,7 @@ class CustomTextFormFiled extends StatelessWidget {
       validator: validator,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      controller: controller,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
 

@@ -1,3 +1,5 @@
+import 'package:e_shop/domain/view_model/authintication/favorite_view_model.dart';
+import 'package:e_shop/domain/view_model/home_view_model.dart';
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
@@ -6,7 +8,6 @@ import 'package:e_shop/presentation/resources/reusable/rate_bar.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
-import 'package:e_shop/presentation/view_model/home_view_model.dart';
 import 'package:e_shop/presentation/views/home_view/help_views/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,7 @@ class FavoritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<FavoriteViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -143,61 +145,73 @@ class FavoritesView extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
-                                        child: Container(
-                                          child: Icon(
-                                            Icons.add,
-                                            color: ColorManager.counterColor,
-                                            size: AppSizeManager.s16.w,
+                                        child: InkWell(
+                                          onTap: () {
+                                            provider.countChangePlus(index);
+                                          },
+                                          child: Container(
+                                            child: Icon(
+                                              Icons.add,
+                                              color: ColorManager.counterColor,
+                                              size: AppSizeManager.s16.w,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: ColorManager.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.r),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  spreadRadius: 1.5,
+                                                  blurRadius: 1,
+                                                  offset: const Offset(0, 1),
+                                                  color: ColorManager
+                                                      .accentFontColor
+                                                      .withOpacity(.2),
+                                                ),
+                                              ],
+                                            ),
+                                            width: AppSizeManager.s20.w,
+                                            height: AppSizeManager.s20.h,
                                           ),
-                                          decoration: BoxDecoration(
-                                            color: ColorManager.white,
-                                            borderRadius:
-                                                BorderRadius.circular(5.r),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                spreadRadius: 1.5,
-                                                blurRadius: 1,
-                                                offset: const Offset(0, 1),
-                                                color: ColorManager
-                                                    .accentFontColor
-                                                    .withOpacity(.2),
-                                              ),
-                                            ],
-                                          ),
-                                          width: AppSizeManager.s20.w,
-                                          height: AppSizeManager.s20.h,
                                         ),
                                       ),
-                                      const Expanded(
-                                          child: Center(
-                                              child: Text(
-                                        StringManager.counter,
-                                      ))),
                                       Expanded(
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          child: Icon(
-                                            Icons.remove,
-                                            color: ColorManager.counterColor,
-                                            size: AppSizeManager.s16.w,
+                                        child: Center(
+                                          child: Text(
+                                            provider.count[index].toString(),
                                           ),
-                                          decoration: BoxDecoration(
-                                            color: ColorManager.white,
-                                            borderRadius:
-                                                BorderRadius.circular(5.r),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                spreadRadius: 1.5,
-                                                blurRadius: 1,
-                                                offset: const Offset(0, 1),
-                                                color: ColorManager
-                                                    .accentFontColor
-                                                    .withOpacity(.2),
-                                              ),
-                                            ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            provider.countChangeMinus(index);
+                                          },
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Icon(
+                                              Icons.remove,
+                                              color: ColorManager.counterColor,
+                                              size: AppSizeManager.s16.w,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: ColorManager.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.r),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  spreadRadius: 1.5,
+                                                  blurRadius: 1,
+                                                  offset: const Offset(0, 1),
+                                                  color: ColorManager
+                                                      .accentFontColor
+                                                      .withOpacity(.2),
+                                                ),
+                                              ],
+                                            ),
+                                            width: AppSizeManager.s20.w,
+                                            height: AppSizeManager.s20.h,
                                           ),
-                                          width: AppSizeManager.s20.w,
-                                          height: AppSizeManager.s20.h,
                                         ),
                                       ),
                                     ],
