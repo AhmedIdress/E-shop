@@ -1,10 +1,10 @@
+import 'package:e_shop/domain/view_model/search_filter_view_model.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';
 import 'package:e_shop/presentation/resources/reusable/rate_bar.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
-import 'package:e_shop/presentation/view_model/search_filter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

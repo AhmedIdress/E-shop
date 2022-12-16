@@ -4,6 +4,7 @@ class AssetManager {
   static const String authPath = imagePath + 'auth/';
   static const String homePath = imagePath + 'home/';
   static const String sideMenu = imagePath + 'side_menu/';
+  static const String splash = imagePath + 'splash/';
 }
 
 class ImageManager {
@@ -49,6 +50,7 @@ class ImageManager {
   static const String notificationContentIcon =
       AssetManager.homePath + 'Group 161.svg';
   static const String right = AssetManager.sideMenu + 'right-6.svg';
+  static const String noInternet = AssetManager.splash + 'no-wifi.png';
   static const List<String> sideMenu = [
     AssetManager.sideMenu + 'order-6.svg',
     AssetManager.sideMenu + 'details-6.svg',

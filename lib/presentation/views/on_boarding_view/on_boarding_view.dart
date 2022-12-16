@@ -1,10 +1,10 @@
+import 'package:e_shop/domain/view_model/on_boarding_view_model.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/reusable/Primary_button.dart';
 import 'package:e_shop/presentation/resources/reusable/dot_indicator.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/resources/text_style_manager.dart';
 import 'package:e_shop/presentation/resources/value_manager.dart';
-import 'package:e_shop/presentation/view_model/on_boarding_view_model.dart';
 import 'package:e_shop/presentation/views/authentication_view/login_view.dart';
 import 'package:e_shop/presentation/views/authentication_view/register_view.dart';
 import 'package:e_shop/presentation/views/home_view/bottom_navigation_view.dart';
@@ -146,7 +146,7 @@ class OnBoardingView extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const RegisterView(),
+                                          RegisterView(),
                                     ),
                                   );
                                 },

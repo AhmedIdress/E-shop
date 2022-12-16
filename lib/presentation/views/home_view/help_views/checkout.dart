@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/model/delivery_address_check_model.dart';
+import 'package:e_shop/data/model/delivery_address_check_model.dart';
 import 'package:e_shop/presentation/resources/asset_manager.dart';
 import 'package:e_shop/presentation/resources/color_manager.dart';
 import 'package:e_shop/presentation/resources/font_manager.dart';

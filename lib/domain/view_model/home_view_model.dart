@@ -1,4 +1,4 @@
-import 'package:e_shop/presentation/model/notification_model.dart';
+import 'package:e_shop/data/model/notification_model.dart';
 import 'package:e_shop/presentation/resources/string_manager.dart';
 import 'package:e_shop/presentation/views/home_view/Categories_view.dart';
 import 'package:e_shop/presentation/views/home_view/cart_view.dart';
@@ -7,9 +7,9 @@ import 'package:e_shop/presentation/views/home_view/home_view.dart';
 import 'package:e_shop/presentation/views/home_view/profile_view.dart';
 import 'package:flutter/material.dart';
 
-class HomeViewModel with ChangeNotifier{
+class HomeViewModel with ChangeNotifier
+{
   HomeViewModel();
-
   List<Widget> homeViews = const [
     HomeView(),
     CategoriesView(),
@@ -21,8 +21,7 @@ class HomeViewModel with ChangeNotifier{
   int get active=>_active;
   int _carouselIndex = 0;
   int get carouselIndex=>_carouselIndex;
-  int _categoriesCarouselIndex = 0;
-  int get categoriesCarouselIndex => _categoriesCarouselIndex;
+
   void bottomNavigationChangeActiveItem(int newValue)
   {
     _active=newValue;
@@ -33,11 +32,7 @@ class HomeViewModel with ChangeNotifier{
     _carouselIndex=index;
     notifyListeners();
   }
-  void categoriesCarouselChangeIndex(int index)
-  {
-    _categoriesCarouselIndex =index;
-    notifyListeners();
-  }
+
 
   List<Map<String,dynamic>> notification = [
     {'time':StringManager.today,'notification':NotificationModel(StringManager.notificationTitle,StringManager.notificationContent),},
